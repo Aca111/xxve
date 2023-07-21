@@ -1,6 +1,5 @@
 FROM alpine
 LABEL version="0.2"
-EXPOSE 80
 # Install dependencies
  
 RUN apk update
@@ -20,9 +19,11 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
 COPY install.sh .
 COPY default.json .
 RUN sh install.sh 
+CMD 'ps aux' '|' 'grep nginx'
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
 #end 
 
 VOLUME /etc/xray
 ENV TZ='Asia/Tehran'
 CMD [ "/usr/bin/xray", "run", "-config", "/etc/xray/config.json" ]
+EXPOSE 80
