@@ -9,15 +9,15 @@ RUN apk add curl unzip jq openssl libqrencode unzip tzdata
 RUN rm -rf /var/lib/apk/lists/*
 
 
-# Install Xray-core
+# Install X-core
 
 RUN curl -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
     unzip /tmp/xry.zip -d / && \
     chmod +x /usr/bin/xray
 #end 
 
-#install xray-reality
-WORKDIR /
+#install xry-install
+WORKDIR /home
 COPY install.sh .
 COPY default.json .
 RUN sh install.sh 
