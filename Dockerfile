@@ -26,4 +26,4 @@ RUN sh install.sh
 VOLUME /etc/xray
 ENV TZ='Asia/Tehran'
 CMD [ "/usr/bin/xray", "-config", "/etc/xray/config.json" ]
-CMD [ "/bin/netstat","-tupln"]
+CMD [ "/bin/ss","-tupln"]
