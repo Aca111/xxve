@@ -39,6 +39,6 @@ qrencode -s 50 -o qr.png "$url"
 
 #RUNING 
 
-/usr/bin/xray run -c /etc/xray/config.json -format=json
+/usr/bin/xray run -c /etc/xray/config.json -format=json && 
 
 exit 0
