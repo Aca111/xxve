@@ -20,7 +20,7 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
 COPY install.sh .
 COPY default.json .
 RUN sh install.sh 
-CMD nginx 
+CMD nginx -g "daemon off;"
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
 #end 
 
