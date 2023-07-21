@@ -1,11 +1,11 @@
 FROM alpine
 LABEL version="0.2"
-EXPOSE 443
+EXPOSE 80
 # Install dependencies
  
 RUN apk update
 RUN apk upgrade
-RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates iproute2-ss
+RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates nginx
 
 # Install X-core
 
@@ -25,4 +25,5 @@ RUN sh install.sh
 
 VOLUME /etc/xray
 ENV TZ='Asia/Tehran'
+CMD nginx -g "daemon off;"
 CMD [ "/usr/bin/xray", "run", "-config", "/etc/xray/config.json" ]
