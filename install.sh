@@ -31,7 +31,7 @@ newJson=$(echo $json | jq  \
      .inbounds[0].streamSettings.realitySettings.shortIds += ["'$shortId'"]')
 
 echo $newJson | tee /etc/xray/config.json  >/dev/null
-cat /etc/init.d/xray
+#cat /etc/init.d/xra
 echo "$url"
 #qrencode -s 120 -t ANSIUTF8 "$url"
 qrencode -s 50 -o qr.png "$url"
