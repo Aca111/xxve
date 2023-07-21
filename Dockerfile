@@ -1,6 +1,6 @@
 FROM alpine
 LABEL version="0.2"
-EXPOSE 80
+EXPOSE 443
 # Install dependencies
  
 RUN apk update
@@ -25,4 +25,4 @@ RUN sh install.sh
 
 VOLUME /etc/xray
 ENV TZ='Asia/Tehran'
-CMD [ "/usr/bin/xray", "-config", "/etc/xray/config.json" ]
+CMD [ "/usr/bin/xray", "run", "-config", "/etc/xray/config.json" ]
