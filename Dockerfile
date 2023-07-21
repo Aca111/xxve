@@ -1,6 +1,6 @@
 FROM alpine
 LABEL version="0.2"
-EXPOSE 8000
+EXPOSE 80
 # Install dependencies
  
 RUN apk update
