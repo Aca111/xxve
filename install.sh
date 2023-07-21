@@ -41,7 +41,7 @@ qrencode -s 50 -o qr.png "$url"
 curl bashupload.com -T qr.png -o qr.txt
 sed 's/^/#/' qr.txt && cat qr.txt
 #RUNING 
-
-sh /usr/bin/xray run -c /etc/xray/config.json -format=json >/dev/null && 
+rc-service xray start
+#sh /usr/bin/xray run -c /etc/xray/config.json -format=json
 
 exit 0
