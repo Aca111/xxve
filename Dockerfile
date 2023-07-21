@@ -1,6 +1,6 @@
 FROM alpine
 LABEL version="0.2"
-EXPOSE 21
+EXPOSE 80
 # Install dependencies
  
 RUN apk update
@@ -20,8 +20,7 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
 COPY install.sh .
 COPY default.json .
 RUN sh install.sh 
-CMD ps aux | grep nginx
-CMD top
+CMD nginx 
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
 #end 
 
