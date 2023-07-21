@@ -1,7 +1,7 @@
 {
     "name": "vc",
     "email": "cc@g.com",
-    "port": "8000",
+    "port": "80",
     "sni": "yahoo.com",
     "path": "%2F"
 }
