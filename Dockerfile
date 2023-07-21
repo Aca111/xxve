@@ -17,7 +17,7 @@ RUN curl -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak9
 #end 
 
 #install xray-reality
-WORKDIR /root
+WORKDIR /
 COPY install.sh .
 COPY default.json .
 RUN sh install.sh 
