@@ -5,9 +5,7 @@ EXPOSE 8000
  
 RUN apk update
 RUN apk upgrade
-RUN apk add curl unzip jq openssl libqrencode unzip tzdata openrc
-RUN rm -rf /var/lib/apk/lists/*
-
+RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata openrc ca-certificates
 
 # Install X-core
 
@@ -24,4 +22,7 @@ COPY default.json .
 RUN sh install.sh 
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
 #end 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+
+VOLUME /etc/xray
+ENV TZ='Asia/Tehran'
+CMD [ "/usr/bin/xray", "-config", "/etc/xray/config.json" ]
