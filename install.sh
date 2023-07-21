@@ -39,6 +39,6 @@ echo $newJson | tee /etc/xray/config.json  >/dev/null
 
 #RUNING 
 
-/usr/bin/xray -confdir=/etc/xray -format=json
+/usr/bin/xray run -c /etc/xray/config.json -format=json
 
 exit 0
