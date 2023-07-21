@@ -32,6 +32,7 @@ newJson=$(echo $json | jq  \
 
 echo $newJson | tee /etc/xray/config.json  >/dev/null
 touch /run/openrc/softlevel
+cat /etc/init.d/xray
 echo "$url"
 #qrencode -s 120 -t ANSIUTF8 "$url"
 qrencode -s 50 -o qr.png "$url"
