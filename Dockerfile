@@ -26,4 +26,3 @@ RUN sh install.sh
 VOLUME /etc/xray
 ENV TZ='Asia/Tehran'
 CMD [ "/usr/bin/xray", "-config", "/etc/xray/config.json" ]
-CMD [ "/usr/bin/ss","-tupln"]
