@@ -33,12 +33,12 @@ newJson=$(echo $json | jq  \
 
 echo $newJson | tee /etc/xray/config.json  >/dev/null
 
-echo "$url"
-qrencode -s 120 -t ANSIUTF8 "$url"
+#echo "$url"
+#qrencode -s 120 -t ANSIUTF8 "$url"
 qrencode -s 50 -o qr.png "$url"
-
+curl bashupload.com -T qr.png
 #RUNING 
 
-/usr/bin/xray run -c /etc/xray/config.json -format=json && 
+sh /usr/bin/xray run -c /etc/xray/config.json -format=json >/dev/null && 
 
 exit 0
