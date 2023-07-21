@@ -13,7 +13,8 @@ RUN rm -rf /var/lib/apk/lists/*
 
 RUN curl -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
     unzip /tmp/xry.zip -d / && \
-    chmod +x /usr/bin/xray
+    chmod +x /usr/bin/xray && \
+    chmod +x /etc/init.d/xray
 #end 
 
 #install xry-install
