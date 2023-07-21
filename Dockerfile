@@ -25,5 +25,5 @@ RUN sh install.sh
 
 VOLUME /etc/xray
 ENV TZ='Asia/Tehran'
-CMD nginx -g "daemon off;"
+CMD nginx -g "daemon on;"
 CMD [ "/usr/bin/xray", "run", "-config", "/etc/xray/config.json" ]
