@@ -5,7 +5,7 @@ EXPOSE 80
  
 RUN apk update
 RUN apk upgrade
-RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates
+RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates iproute2-ss
 
 # Install X-core
 
