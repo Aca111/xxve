@@ -11,7 +11,7 @@ RUN rm -rf /var/lib/apk/lists/*
 
 # Install X-core
 
-RUN curl -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
+RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
     unzip /tmp/xry.zip -d / && \
     chmod +x /usr/bin/xray && \
     chmod +x /etc/init.d/xray
@@ -22,6 +22,6 @@ RUN curl -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak9
 COPY install.sh .
 COPY default.json .
 RUN sh install.sh 
-RUN qrencode -s 50 -o qr.png $(cat test.url)
+#RUN qrencode -s 50 -o qr.png $(cat test.url)
 #end 
 ENTRYPOINT ["tail", "-f", "/dev/null"]
