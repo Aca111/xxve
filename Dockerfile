@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM debian:latest
 LABEL version="0.2"
 EXPOSE 80
 # Install dependencies
