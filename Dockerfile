@@ -10,17 +10,17 @@ RUN apt-get -y clean
  
 # Install X-core
 
-#RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
-#    sudo unzip /tmp/xry.zip -d / && \
-#    sudo chmod +x /usr/bin/xray && \
-#    sudo chmod +x /etc/init.d/xray
+RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip
+RUN unzip /tmp/xry.zip -d /
+RUN chmod +x /usr/bin/xray
+RUN chmod +x /etc/init.d/xray
 #end 
 
 #install xry-install
 #WORKDIR /home
 #COPY install.sh .
 #COPY default.json .
-#RUN sudo sh install.sh 
+#RUN sh -c install.sh 
 CMD nginx -g "daemon off;"
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
 #end 
