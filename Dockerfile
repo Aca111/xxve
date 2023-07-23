@@ -23,7 +23,6 @@ COPY default.json .
 RUN ./install.sh 
 CMD nginx -g "daemon off;"
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
-CMD [ "/usr/bin/xray", "run", "-config", "/etc/xray/config.json" ]
 
 #end 
 
