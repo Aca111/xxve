@@ -5,7 +5,7 @@ EXPOSE 80
  
 RUN apt-get -y update
 RUN apt-get -y upgrade
-RUN apt-get -y install --no-install-recommends curl unzip jq openssl qrencode unzip tzdata ca-certificates nginx
+RUN apt-get -y install --no-install-recommends curl unzip jq openssl qrencode unzip tzdata ca-certificates nginx procps net-tools grep
 RUN apt-get -y clean
  
 # Install X-core
