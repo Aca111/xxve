@@ -3,10 +3,10 @@ LABEL version="0.2"
 EXPOSE 80
 # Install dependencies
  
-RUN sudo apt-get update
-RUN sudo apt-get upgrade
-RUN sudo apt-get install --no-install-recommends curl unzip jq openssl qrencode unzip tzdata ca-certificates nginx
-RUN sudo apt-get clean
+RUN apt-get update
+RUN apt-get upgrade
+RUN apt-get install --no-install-recommends curl unzip jq openssl qrencode unzip tzdata ca-certificates nginx
+RUN apt-get clean
 
 # Install X-core
 
