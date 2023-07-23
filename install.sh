@@ -30,8 +30,8 @@ newJson=$(echo $json | jq  \
      .inbounds[0].streamSettings.realitySettings.privateKey = $pk |
      .inbounds[0].streamSettings.realitySettings.shortIds += ["'$shortId'"]')
 
-echo $json | tee /etc/xray/config.json  >/dev/null
-#echo $newJson | tee /etc/xray/config.json  >/dev/null
+#echo $json | tee /etc/xray/config.json  >/dev/null
+echo $newJson | tee /etc/xray/config.json  >/dev/null
 cat /etc/xray/config.json
 #cat /etc/init.d/xra
 echo "$url"
