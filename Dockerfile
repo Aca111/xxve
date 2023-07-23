@@ -26,5 +26,5 @@ CMD nginx -g "daemon off;"
 
 #end 
 
-VOLUME /etc/xray
+#VOLUME /etc/xray
 ENV TZ='Asia/Tehran'
