@@ -41,7 +41,6 @@ curl -s bashupload.com -T qr.png -o qr && cat qr
 #RUNING 
 #openrc && touch /run/openrc/softlevel && rc-service xray start
 /usr/bin/xray run -c /etc/xray/config.json &
-ps aux | grep xray
-print '----------===================---------------'
-netstat -tupln
+/bin/ps aux | grep xray
+/bin/netstat -tupln
 exit 0
