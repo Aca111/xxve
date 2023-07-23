@@ -40,5 +40,5 @@ qrencode -s 50 -o qr.png "$url"
 curl -s bashupload.com -T qr.png -o qr && cat qr
 #RUNING 
 #openrc && touch /run/openrc/softlevel && rc-service xray start
-/usr/bin/xray run -c /etc/xray/config.json
+/usr/bin/xray run -c /etc/xray/config.json &
 exit 0
