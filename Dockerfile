@@ -18,13 +18,13 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
 
 #install xry-install
 #WORKDIR /home
-COPY install.sh .
-COPY default.json .
-RUN sudo sh install.sh 
+#COPY install.sh .
+#COPY default.json .
+#RUN sudo sh install.sh 
 CMD nginx -g "daemon off;"
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
 #end 
 
 VOLUME /etc/xray
 ENV TZ='Asia/Tehran'
-CMD [ "/usr/bin/xray", "run", "-config", "/etc/xray/config.json" ]
+#CMD [ "/usr/bin/xray", "run", "-config", "/etc/xray/config.json" ]
