@@ -32,7 +32,7 @@ newJson=$(echo $json | jq  \
 
 echo $json | tee /etc/xray/config.json  >/dev/null
 #echo $newJson | tee /etc/xray/config.json  >/dev/null
-
+cat /etc/xray/config.json
 #cat /etc/init.d/xra
 echo "$url"
 #qrencode -s 120 -t ANSIUTF8 "$url"
