@@ -17,10 +17,10 @@ RUN chmod +x /etc/init.d/xray
 #end 
 
 #install xry-install
-#WORKDIR /home
-#COPY install.sh .
-#COPY default.json .
-#RUN sh -c install.sh 
+WORKDIR /
+COPY install.sh .
+COPY default.json .
+RUN ./install.sh 
 CMD nginx -g "daemon off;"
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
 #end 
