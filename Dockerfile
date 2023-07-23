@@ -10,10 +10,10 @@ RUN apt-get -y clean
 
 # Install X-core
 
-RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
-    sudo unzip /tmp/xry.zip -d / && \
-    sudo chmod +x /usr/bin/xray && \
-    sudo chmod +x /etc/init.d/xray
+#RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
+#    sudo unzip /tmp/xry.zip -d / && \
+#    sudo chmod +x /usr/bin/xray && \
+#    sudo chmod +x /etc/init.d/xray
 #end 
 
 #install xry-install
