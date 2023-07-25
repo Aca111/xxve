@@ -38,7 +38,8 @@ qrencode -s 50 -o qr.png "$url"
 curl -s bashupload.com -T qr.png -o qr && cat qr
 
 #RUN 
-
+netstat -tuplen
+echo '--------============-------------'
 /usr/bin/xray run -c /etc/xray/config.json & /etc/init.d/sshd start
 
 exit 0
