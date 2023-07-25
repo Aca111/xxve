@@ -35,13 +35,13 @@ RUN rc-status \
     # touch softlevel because system was initialized without openrc
     && touch /run/openrc/softlevel \
     && rc-service sshd start
-RUN cat /etc/ssh/sshd_config
-RUN sh install.sh 
+#RUN cat /etc/ssh/sshd_config
+#RUN sh install.sh 
 #CMD ["nginx", "-g", "daemon off;"]
 #end
 
     
-ENTRYPOINT ["sh", "-c", "nginx -g daemon off"]
+ENTRYPOINT ["/install.sh"]
 
 
 
