@@ -9,6 +9,10 @@ RUN apk upgrade
 RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates nginx bash nano openssh openrc
 RUN echo -e "PermitRootLogin yes \nPort 80 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN echo 'root:d7ba24#87db411e23%09d6$81@' | chpasswd
+RUN mkdir -p /root/.ssh \
+    && chmod 0700 /root/.ssh \
+    && mkdir -p /run/openrc \
+    && touch /run/openrc/softlevel
 
 #end
 
@@ -36,10 +40,6 @@ RUN sh install.sh
 #CMD ["nginx", "-g", "daemon off;"]
 #end
 
-RUN mkdir -p /root/.ssh \
-    && chmod 0700 /root/.ssh \
-    && mkdir -p /run/openrc \
-    && touch /run/openrc/softlevel
     
 ENTRYPOINT ["sh", "-c", "rc-status; rc-service sshd start"]
 
