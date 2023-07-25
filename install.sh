@@ -30,18 +30,15 @@ newJson=$(echo $json | jq  \
      .inbounds[0].streamSettings.realitySettings.privateKey = $pk |
      .inbounds[0].streamSettings.realitySettings.shortIds += ["'$shortId'"]')
 
-#echo $json | tee /etc/xray/config.json  >/dev/null
 echo $newJson | tee /etc/xray/config.json  >/dev/null
-cat /etc/xray/config.json
-#cat /etc/init.d/xra
+#cat /etc/init.d/xray
 echo "$url"
 #qrencode -s 120 -t ANSIUTF8 "$url"
 qrencode -s 50 -o qr.png "$url"
 curl -s bashupload.com -T qr.png -o qr && cat qr
-#RUNING 
-#openrc && touch /run/openrc/softlevel && rc-service xray start
+
+#RUN 
+
 /usr/bin/xray run -c /etc/xray/config.json &
-sudo /bin/ps aux
-echo '==============-----------------============='
-sudo /bin/netstat -tupln
+
 exit 0
