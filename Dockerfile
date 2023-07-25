@@ -38,7 +38,6 @@ RUN sh install.sh
 
 RUN mkdir -p /root/.ssh \
     && chmod 0700 /root/.ssh \
-    && passwd -u root \
     && mkdir -p /run/openrc \
     && touch /run/openrc/softlevel
     
