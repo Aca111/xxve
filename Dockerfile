@@ -1,13 +1,13 @@
 FROM alpine:latest
 LABEL version="1.1"
-EXPOSE 3312
+EXPOSE 80
 
 # Install dependencies
 
 RUN apk update
 RUN apk upgrade
 RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates nginx bash nano openssh openrc
-RUN echo -e "PermitRootLogin yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
+RUN echo -e "PermitRootLogin yes \nPort 80 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN echo 'root:d7ba24#87db411e23%09d6$81@' | chpasswd
 
 #end
@@ -32,11 +32,10 @@ COPY install.sh .
 COPY default.json .
 RUN rc-status \
     # touch softlevel because system was initialized without openrc
-    && touch /run/openrc/softlevel \
-    && rc-service sshd start
+    && touch /run/openrc/softlevel
 RUN sh install.sh 
-CMD ["nginx", "-g", "daemon off;"]
-
+#CMD ["nginx", "-g", "daemon off;"]
+CMD ["rc-service" "sshd" "start"]
 #end
 
 #VOLUME /etc/xray
