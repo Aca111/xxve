@@ -23,12 +23,12 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
 
 #install xry-install
 
-#WORKDIR ~/
+ENV TZ='Asia/Tehran'
+WORKDIR ~/
 COPY install.sh .
 COPY default.json .
 RUN sh install.sh 
 CMD [nginx -g 'daemon off;']
-ENV TZ='Asia/Tehran'
 
 #end
 
