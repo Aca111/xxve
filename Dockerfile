@@ -30,11 +30,11 @@ ENV TZ='Asia/Tehran'
 WORKDIR ~/
 COPY install.sh .
 COPY default.json .
-RUN sh install.sh 
 RUN rc-status \
     # touch softlevel because system was initialized without openrc
     && touch /run/openrc/softlevel \
     && rc-service sshd start
+RUN sh install.sh 
 CMD ["nginx", "-g", "daemon off;"]
 
 #end
