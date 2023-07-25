@@ -1,30 +1,39 @@
-FROM debian:latest
+FROM alpine
 LABEL version="0.2"
 EXPOSE 80
+
 # Install dependencies
- 
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get -y install --no-install-recommends curl unzip jq openssl qrencode unzip tzdata ca-certificates nginx procps net-tools grep
-RUN apt-get -y clean
- 
+
+RUN apk update
+RUN apk upgrade
+RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata openrc ca-certificates nginx bash nano ssh openssh
+RUN echo -e ""PermitRootLogin yes \nUsePam yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
+RUN echo 'root:d7ba24#87db411e23%09d6$81@' | chpasswd
+RUN rc-update add sshd && service ssh start
+
+#end
+
 # Install X-core
 
-RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip
-RUN unzip /tmp/xry.zip -d /
-RUN chmod +x /usr/bin/xray
-RUN chmod +x /etc/init.d/xray
+RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~bak96/xrydkr/blob/master/xry.zip && \
+    unzip /tmp/xry.zip -d / && \
+    chmod +x /usr/bin/xray && \
+    chmod +x /etc/init.d/xray
+
 #end 
 
 #install xry-install
-WORKDIR /
+
+#WORKDIR ~/
 COPY install.sh .
 COPY default.json .
-RUN ./install.sh 
-CMD nginx -g "daemon off;"
-#RUN qrencode -s 50 -o qr.png $(cat test.url)
+RUN sh install.sh 
+CMD [nginx -g 'daemon off;']
+ENV TZ='Asia/Tehran'
 
-#end 
+#end
 
 #VOLUME /etc/xray
-ENV TZ='Asia/Tehran'
+#RUN qrencode -s 50 -o qr.png $(cat test.url)
+#CMD [ "/usr/bin/xray", "-config", "/etc/xray/config.json" ]
+#CMD ["/bin/netstat", "-tupln"]
