@@ -36,7 +36,6 @@ RUN rc-status \
     && touch /run/openrc/softlevel \
     && rc-service sshd start
 RUN cat /etc/ssh/sshd_config
-RUN iptables -L
 RUN sh install.sh 
 #CMD ["nginx", "-g", "daemon off;"]
 #end
