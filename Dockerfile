@@ -18,9 +18,6 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
     unzip /tmp/xry.zip -d / && \
     chmod +x /usr/bin/xray && \
     chmod +x /etc/init.d/xray
-
-RUN mkdir -p /root/.ssh \
-    && chmod 0700 /root/.ssh
     
 #end 
 
@@ -38,6 +35,16 @@ RUN cat /etc/ssh/sshd_config
 RUN sh install.sh 
 #CMD ["nginx", "-g", "daemon off;"]
 #end
+
+RUN mkdir -p /root/.ssh \
+    && chmod 0700 /root/.ssh \
+    && passwd -u root \
+    && mkdir -p /run/openrc \
+    && touch /run/openrc/softlevel
+    
+ENTRYPOINT ["sh", "-c", "rc-status; rc-service sshd start"]
+
+
 
 #VOLUME /etc/xray
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
