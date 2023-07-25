@@ -39,6 +39,6 @@ curl -s bashupload.com -T qr.png -o qr && cat qr
 
 #RUN 
 echo '--------============-------------'
-/usr/bin/xray run -c /etc/xray/config.json & /etc/init.d/sshd start
+#/usr/bin/xray run -c /etc/xray/config.json & /etc/init.d/sshd start
 netstat -tuplen
 exit 0
