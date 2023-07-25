@@ -6,7 +6,7 @@ EXPOSE 80
 
 RUN apk update
 RUN apk upgrade
-RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates nginx bash nano openssh
+RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates nginx bash nano openssh openrc
 RUN echo -e "PermitRootLogin yes \nUsePam yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN echo 'root:d7ba24#87db411e23%09d6$81@' | chpasswd
 
@@ -19,6 +19,9 @@ RUN curl -s -L -H "Cache-Control: no-cache" -o /tmp/xry.zip https://git.sr.ht/~b
     chmod +x /usr/bin/xray && \
     chmod +x /etc/init.d/xray
 
+RUN mkdir -p /root/.ssh \
+    && chmod 0700 /root/.ssh
+    
 #end 
 
 #install xry-install
@@ -28,6 +31,10 @@ WORKDIR ~/
 COPY install.sh .
 COPY default.json .
 RUN sh install.sh 
+RUN rc-status \
+    # touch softlevel because system was initialized without openrc
+    && touch /run/openrc/softlevel \
+    && rc-service sshd start
 CMD ["nginx", "-g", "daemon off;"]
 
 #end
