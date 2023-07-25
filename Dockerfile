@@ -32,8 +32,9 @@ COPY install.sh .
 COPY default.json .
 RUN rc-status \
     # touch softlevel because system was initialized without openrc
-    && touch /run/openrc/softlevel
-CMD ["rc-service" "sshd" "start"]
+    && touch /run/openrc/softlevel \
+    && rc-service sshd start
+RUN cat /etc/ssh/sshd_config
 RUN sh install.sh 
 #CMD ["nginx", "-g", "daemon off;"]
 #end
