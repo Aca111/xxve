@@ -41,7 +41,7 @@ RUN sh install.sh
 #end
 
     
-ENTRYPOINT ["sh", "-c", "rc-status; rc-service sshd start;nginx -g daemon off"]
+ENTRYPOINT ["sh", "-c", "rc-statust;nginx -g daemon off;rc-service sshd start"]
 
 
 
