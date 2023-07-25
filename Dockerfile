@@ -7,7 +7,7 @@ EXPOSE 80
 RUN apk update
 RUN apk upgrade
 RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates nginx bash nano openssh openrc
-RUN echo -e "PermitRootLogin yes \nUsePam yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
+RUN echo -e "PermitRootLogin yes \nPort 3312 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN echo 'root:d7ba24#87db411e23%09d6$81@' | chpasswd
 
 #end
