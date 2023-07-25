@@ -41,7 +41,7 @@ RUN sh install.sh
 #end
 
     
-ENTRYPOINT ["sh", "-c", "rc-status;nginx -g daemon-off; rc-service sshd start"]
+ENTRYPOINT ["sh", "-c", "rc-status;nginx -g 'daemon off'; rc-service sshd start"]
 
 
 
@@ -49,4 +49,3 @@ ENTRYPOINT ["sh", "-c", "rc-status;nginx -g daemon-off; rc-service sshd start"]
 #RUN qrencode -s 50 -o qr.png $(cat test.url)
 #CMD [ "/usr/bin/xray", "-config", "/etc/xray/config.json" ]
 #CMD ["/bin/netstat", "-tupln"]
-'
