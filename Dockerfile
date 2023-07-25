@@ -1,6 +1,6 @@
 FROM alpine:latest
 LABEL version="1.1"
-EXPOSE 80
+EXPOSE 3312
 
 # Install dependencies
 
