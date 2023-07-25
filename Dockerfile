@@ -7,7 +7,7 @@ EXPOSE 80
 RUN apk update
 RUN apk upgrade
 RUN apk add --no-cache curl unzip jq openssl libqrencode unzip tzdata ca-certificates nginx bash nano openssh openrc
-RUN echo -e "PermitRootLogin yes \nPort 80 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
+RUN echo -e "PermitRootLogin yes \nPort 3342 \nPasswordAuthentication yes" >> /etc/ssh/sshd_config
 RUN echo 'root:d7ba24#87db411e23%09d6$81@' | chpasswd
 RUN mkdir -p /root/.ssh \
     && chmod 0700 /root/.ssh \
@@ -41,7 +41,7 @@ RUN sh install.sh
 #end
 
     
-ENTRYPOINT ["sh", "-c", "rc-status; rc-service sshd start"]
+ENTRYPOINT ["sh", "-c", "rc-status; rc-service sshd start;nginx -g daemon off"]
 
 
 
