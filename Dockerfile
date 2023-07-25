@@ -41,7 +41,7 @@ RUN sh install.sh
 #end
 
     
-ENTRYPOINT ["sh", "-c", "nginx -g daemon off; /usr/bin/xray -config /etc/xray/config.json"]
+ENTRYPOINT ["sh", "-c", "nginx -g daemon off"]
 
 
 
