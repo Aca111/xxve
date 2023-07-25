@@ -28,7 +28,7 @@ WORKDIR ~/
 COPY install.sh .
 COPY default.json .
 RUN sh install.sh 
-CMD [/bin/nginx -g 'daemon off;']
+CMD ["/bin/nginx" "-g" "daemon off;"]
 
 #end
 
